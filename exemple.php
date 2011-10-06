@@ -33,8 +33,8 @@ if ($response->status == WALLETIX_GENCODE_OK) {
 // = code de paiement  73DEB7FAF0 code de confirmation D726A1BEEA =
 // ================================================================
 
-$paiementCode="73DEB7FAF0";
-$confirmationCode="D726A1BEEA";
+$paiementCode="3690E8DD6E";
+$confirmationCode="A21609A663";
 
 $response = $api->verifyCode($paiementCode, $confirmationCode);
 

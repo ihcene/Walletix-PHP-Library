@@ -31,11 +31,6 @@
  **/
 
 
-// ============================================================================
-// = Mieux vaut désigner des constantes que les développeurs peuvent utiliser =
-// = C'est mieux que les chiffres. A compléter                                =
-// ============================================================================
-
 define('WALLETIX_GENCODE_OK',             1);
 define('WALLETIX_VERCODE_OK',             1);
 define('WALLETIX_CONFCODE_OK',            1);
@@ -116,8 +111,9 @@ class WalletixAPI
   protected function callAPI($url, $params) {
   	$ch = curl_init();
   	
-  	curl_setopt($ch, CURLOPT_URL, $this->buildFullURL($url, $params));
+  	curl_setopt($ch, CURLOPT_URL, $url);
   	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
   	curl_setopt($ch, CURLOPT_POST, true);
   	
   	$result = curl_exec($ch);
@@ -138,10 +134,6 @@ class WalletixAPI
     	);
   }
   
-  private function buildFullURL($url, $params)
-  {
-    return $url.'?'.http_build_query($params);
-  }
   
   
   private function hasEnoughInformations()
